@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+    <style>
+        body {
+            background-color: lightblue;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var firstName = document.forms["registrationForm"]["firstname"].value;
+            var middleName = document.forms["registrationForm"]["middlename"].value;
+            var lastName = document.forms["registrationForm"]["lastname"].value;
+            var course = document.forms["registrationForm"]["course"].value;
+            var gender = document.forms["registrationForm"]["gender"].value;
+            var phone = document.forms["registrationForm"]["phone"].value;
+            var address = document.forms["registrationForm"]["address"].value;
+            var email = document.forms["registrationForm"]["email"].value;
+            var pass = document.forms["registrationForm"]["pass"].value;
+            var repass = document.forms["registrationForm"]["repass"].value;
+
+            if (firstName == "" || middleName == "" || lastName == "" || course == "" || gender == "" || phone == "" || address == "" || email == "" || pass == "" || repass == "") {
+                alert("Please fill out all fields.");
+                return false;
+            }
+            if (firstName.length > 15 || middleName.length > 15 || lastName.length > 15 || phone.length > 10 || address.length > 80 || email.length > 50 || pass.length > 20 || repass.length > 20) {
+                alert("One or more fields exceed the allowed length.");
+                return false;
+            }
+
+            if (pass != repass) {
+                alert("Passwords do not match.");
+                return false;
+            }
+
+            alert("Registration Completed!");
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <br>
+    <br>
+    <br>
+    <form name="registrationForm" onsubmit="return validateForm()">
+        <label>First name</label>
+        <input type="text" name="firstname" size="15"/><br><br>
+        <label>Middle name</label>
+        <input type="text" name="middlename" size="15"/><br><br>
+        <label>Last name</label>
+        <input type="text" name="lastname" size="15"/><br><br>
+           
+        <label>Course:</label>   
+        <select name="course">
+            <option value="">Select a course</option>
+            <option value="mba">MBA</option>
+            <option value="btech">B.Tech</option>
+            <option value="mtech">M.Tech</option>
+        </select>
+        <br>
+        <br>
+    
+        <label>Gender:</label><br>
+        <input type="radio" value="male" name="gender"> Male
+        <input type="radio" value="female" name="gender"> Female
+        <input type="radio" value="others" name="gender"> Others
+        
+        <br>
+        <br>
+        <label>Phone:</label>
+        <input type="text" value="+91" size="2" readonly/>
+        <input type="number" name="phone" size="10"/><br><br>
+
+        <label>Address</label><br>
+        <textarea name="address" cols="80" rows="5"></textarea><br><br>
+        <label>Email</label>
+        <input type="email" id="email" name="email"/><br><br>
+        Password:  
+        <input type="password" id="pass" name="pass"> <br><br>  
+
+        Re-type password:  
+        <input type="password" id="repass" name="repass"> <br><br>  
+        <input type="submit" value="Submit"/>  
+    </form>  
+</body>  
+</html>
